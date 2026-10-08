@@ -1,0 +1,226 @@
+{
+  "version": "1.0.0",
+  "base_path": "/api/v1",
+  "description": "PlayBase WebApp va Backend API marshrutlari xaritasi",
+  "routes": [
+    {
+      "page": "Dashboard",
+      "path": "/",
+      "tab": "dashboard",
+      "description": "Jonli stollar va taymerlar boshqaruv paneli",
+      "endpoints": [
+        {
+          "key": "GET_TABLES_STATUS",
+          "method": "GET",
+          "endpoint": "/tables/status/",
+          "description": "Barcha stollarning real-vaqt holati va faol sessiyalari"
+        },
+        {
+          "key": "START_SESSION",
+          "method": "POST",
+          "endpoint": "/sessions/start/",
+          "description": "Yangi vaqtbay yoki limitli sessiya boshlash"
+        },
+        {
+          "key": "STOP_SESSION",
+          "method": "POST",
+          "endpoint": "/sessions/{id}/stop/",
+          "description": "Sessiyani yakunlash va yakuniy chek hisoblash"
+        },
+        {
+          "key": "EXTEND_SESSION",
+          "method": "POST",
+          "endpoint": "/sessions/{id}/extend/",
+          "description": "Limitli seansga qo'shimcha daqiqa qo'shish"
+        },
+        {
+          "key": "TRANSFER_SESSION",
+          "method": "POST",
+          "endpoint": "/sessions/{id}/transfer/",
+          "description": "Mijozni boshqa stolga ko'chirish"
+        },
+        {
+          "key": "ADD_SESSION_ORDER",
+          "method": "POST",
+          "endpoint": "/sessions/{id}/orders/",
+          "description": "Faol sessiyaga bar mahsulotlarini qo'shish"
+        },
+        {
+          "key": "REMOVE_SESSION_ORDER",
+          "method": "DELETE",
+          "endpoint": "/sessions/{id}/orders/{order_id}/",
+          "description": "Sessiyadan buyurtmani bekor qilish"
+        }
+      ]
+    },
+    {
+      "page": "BarPOS",
+      "path": "/bar",
+      "tab": "bar",
+      "description": "To'g'ridan-to'g'ri kassa va bar savdosi",
+      "endpoints": [
+        {
+          "key": "GET_BAR_PRODUCTS",
+          "method": "GET",
+          "endpoint": "/products/",
+          "description": "Sotuvdagi barcha bar mahsulotlari va qoldiqlari"
+        },
+        {
+          "key": "GET_BAR_CATEGORIES",
+          "method": "GET",
+          "endpoint": "/products/categories/",
+          "description": "Mahsulot kategoriyalari"
+        },
+        {
+          "key": "CREATE_BAR_SALE",
+          "method": "POST",
+          "endpoint": "/products/sales/",
+          "description": "To'g'ridan-to'g'ri savdoni amalga oshirish"
+        }
+      ]
+    },
+    {
+      "page": "Analytics",
+      "path": "/analytics",
+      "tab": "analytics",
+      "description": "Biznes ko'rsatkichlari, daromad va yuklama tahlili",
+      "endpoints": [
+        {
+          "key": "GET_DASHBOARD_STATS",
+          "method": "GET",
+          "endpoint": "/analytics/dashboard/",
+          "description": "Bugungi/haftalik/oylik umumiy daromad va statistika"
+        },
+        {
+          "key": "GET_REVENUE_TRENDS",
+          "method": "GET",
+          "endpoint": "/analytics/revenue-trends/",
+          "description": "7 yoki 30 kunlik tushum dinamikasi grafigi"
+        },
+        {
+          "key": "GET_PEAK_HOURS",
+          "method": "GET",
+          "endpoint": "/analytics/peak-hours/",
+          "description": "24 soatlik yuklama va gavjumlik tahlili"
+        },
+        {
+          "key": "GET_TOP_PRODUCTS",
+          "method": "GET",
+          "endpoint": "/analytics/top-products/",
+          "description": "Eng ko'p sotilgan mahsulotlar va rentabellik"
+        },
+        {
+          "key": "GET_PAYMENT_METHODS",
+          "method": "GET",
+          "endpoint": "/analytics/payment-methods/",
+          "description": "To'lov turlari bo'yicha taqsimot"
+        }
+      ]
+    },
+    {
+      "page": "History",
+      "path": "/history",
+      "tab": "history",
+      "description": "Barcha yopilgan seanslar va cheklar arxivi",
+      "endpoints": [
+        {
+          "key": "GET_SESSION_HISTORY",
+          "method": "GET",
+          "endpoint": "/sessions/history/",
+          "description": "Sessiyalar tarixi va filtrlar"
+        }
+      ]
+    },
+    {
+      "page": "ProductsManagement",
+      "path": "/products",
+      "tab": "products",
+      "description": "Ombor, mahsulotlar va narxlarni boshqarish",
+      "endpoints": [
+        {
+          "key": "PRODUCTS_CRUD",
+          "method": "GET|POST|PUT|DELETE",
+          "endpoint": "/products/",
+          "description": "Mahsulotlarni yaratish, tahrirlash va qoldiqlarini kiritish"
+        },
+        {
+          "key": "CATEGORIES_CRUD",
+          "method": "GET|POST",
+          "endpoint": "/products/categories/",
+          "description": "Kategoriyalarni boshqarish"
+        }
+      ]
+    },
+    {
+      "page": "Settings",
+      "path": "/settings",
+      "tab": "settings",
+      "description": "Klub, zonalar, stollar va xodimlar sozlamalari",
+      "endpoints": [
+        {
+          "key": "CLUB_INFO",
+          "method": "GET|PUT",
+          "endpoint": "/club/info/",
+          "description": "Klub ma'lumotlari, valyuta va yaxlitlash sozlamalari"
+        },
+        {
+          "key": "ZONES_CRUD",
+          "method": "GET|POST|PUT|DELETE",
+          "endpoint": "/zones/",
+          "description": "O'yin zonalari va soatbay tariflarni boshqarish"
+        },
+        {
+          "key": "TABLES_CRUD",
+          "method": "GET|POST|PUT|DELETE",
+          "endpoint": "/tables/",
+          "description": "O'yin stollari va qurilmalarni boshqarish"
+        }
+      ]
+    },
+    {
+      "page": "Billing",
+      "path": "/billing",
+      "tab": "billing",
+      "description": "SaaS obunasi va to'lovlar",
+      "endpoints": [
+        {
+          "key": "GET_PLANS",
+          "method": "GET",
+          "endpoint": "/billing/plans/",
+          "description": "SaaS tarif rejalari"
+        },
+        {
+          "key": "SUBSCRIBE_PLAN",
+          "method": "POST",
+          "endpoint": "/billing/subscribe/",
+          "description": "Payme/Click orqali to'lov yaratish"
+        },
+        {
+          "key": "TRANSACTIONS_LIST",
+          "method": "GET",
+          "endpoint": "/billing/transactions/",
+          "description": "To'lovlar tarixi"
+        }
+      ]
+    },
+    {
+      "page": "Authentication",
+      "path": "/auth",
+      "description": "Telegram TWA va SSO autentifikatsiyasi",
+      "endpoints": [
+        {
+          "key": "TELEGRAM_WEBAPP_AUTH",
+          "method": "POST",
+          "endpoint": "/auth/telegram-web-app/",
+          "description": "Telegram WebApp initData orqali JWT olish"
+        },
+        {
+          "key": "TELEGRAM_WIDGET_AUTH",
+          "method": "POST",
+          "endpoint": "/auth/telegram-widget/",
+          "description": "Telegram Widget orqali tizimga kirish"
+        }
+      ]
+    }
+  ]
+}
